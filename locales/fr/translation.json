@@ -9,7 +9,7 @@
     },
     "conditions" : {
       "A1" : "Ensoleillé",
-      "A1" : "Beaucoup de soleil",
+      "A2" : "Beaucoup de soleil",
       "B1" : "Nuageux",
       "B2" : "Beaucoup de nuages",
       "C1" : "Pluvieux",

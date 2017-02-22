@@ -9,7 +9,7 @@
     },
     "conditions" : {
       "A1" : "Zonnig",
-      "A1" : "Veel zon",
+      "A2" : "Veel zon",
       "B1" : "Bewolkt",
       "B2" : "Zwaar bewolkt",
       "C1" : "Regenachtig",

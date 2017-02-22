@@ -9,7 +9,7 @@
     },
     "conditions" : {
       "A1" : "Sunny",
-      "A1" : "Lots of sun",
+      "A2" : "Lots of sun",
       "B1" : "Cloudy",
       "B2" : "Lots of clouds",
       "C1" : "Rainy",
