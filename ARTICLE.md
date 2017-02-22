@@ -79,7 +79,7 @@ And your locale file could look like :
 
 ```
 {
-  a : "Today's date is : {{date, formatDate:MMMM D YYYY}}"
+  "a" : "Today's date is : {{date, formatDate:MMMM D YYYY}}"
 }
 ```
 
