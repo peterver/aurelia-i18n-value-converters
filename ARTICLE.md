@@ -29,7 +29,7 @@ The fact that it acts as a proxy, allows us to still hook into the **i18next ins
 
 i18next provides [interpolation](http://i18next.com/translate/interpolation/) support, this is a way of defining how the specific key-value pairs in your locale file should be processed.
 
-Aurelia provides thin wrappers such as the *[html]* flag or the *df (dateFormat)* value converter to hook into this.
+Aurelia provides thin wrappers such as the *df (dateFormat)* value converter to hook into this.
 
 But what if we wanted to add our own custom value converters into the mix?
 
@@ -96,9 +96,11 @@ The format will be split on the `:` character to become `['formatDate', 'MMMM D 
 
 Our format function will then look for the value converter in aurelia's registered resources, and will execute the `toView` function with the provided parameters.
 
-If no value converter was registered under that name, it will simply return the value.
+And behold, the eventual result would be : ```Today's date is : February 20 2017```
+
+If no value converter was registered under that name, it will simply return the value you passed to it.
 
 ### Take note
 
-This approach will only work if the value converter that you are trying to use is registered as a global resource.
+- This approach will only work if the value converter that you are trying to use is registered as a global resource.
  
