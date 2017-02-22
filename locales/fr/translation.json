@@ -1,0 +1,31 @@
+{
+  "headline" : "Les prévisions météorologiques pour {{date, formatDate:D MMMM YYYY}}",
+  "weather" : {
+    "temperature" : "{{temp, formatUnit}}",
+    "time" : {
+      "date" : "{{date, formatDate:D}}",
+      "month" : "{{date, formatDate:MMM}}",
+      "day" : "{{date, formatDate:dddd}}"
+    },
+    "conditions" : {
+      "A1" : "Ensoleillé",
+      "A1" : "Beaucoup de soleil",
+      "B1" : "Nuageux",
+      "B2" : "Beaucoup de nuages",
+      "C1" : "Pluvieux",
+      "C2" : "Beaucoup de pluie",
+      "D1" : "Venteux",
+      "D2" : "Beaucoup de vent"
+    }
+  },
+  "cities" : {
+    "0" : "Gand",
+    "1" : "Londres",
+    "2" : "Barcelone"
+  },
+  "countries" : {
+    "BE" : "Belgique",
+    "UK" : "Royaume-Uni",
+    "ES" : "Espagne" 
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "headline" : "The weather forecast for {{date, formatDate:MMMM D YYYY}}",
+  "weather" : {
+    "temperature" : "{{temp, formatUnit}}",
+    "time" : {
+      "date" : "{{date, formatDate:D}}",
+      "month" : "{{date, formatDate:MMM}}",
+      "day" : "{{date, formatDate:dddd}}"
+    },
+    "conditions" : {
+      "A1" : "Sunny",
+      "A1" : "Lots of sun",
+      "B1" : "Cloudy",
+      "B2" : "Lots of clouds",
+      "C1" : "Rainy",
+      "C2" : "Pouring rain",
+      "D1" : "Windy",
+      "D2" : "Lots of wind"
+    }
+  },
+  "cities" : {
+    "0" : "Ghent",
+    "1" : "London",
+    "2" : "Barcelona"
+  },
+  "countries" : {
+    "BE" : "Belgium",
+    "UK" : "United Kingdom",
+    "ES" : "Spain" 
+  }
+}

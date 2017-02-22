@@ -1,0 +1,31 @@
+{
+  "headline" : "Het weerbericht voor {{date, formatDate:DD MMMM YYYY}}",
+  "weather" : {
+    "temperature" : "{{temp, formatUnit}}",
+    "time" : {
+      "date" : "{{date, formatDate:D}}",
+      "month" : "{{date, formatDate:MMM}}",
+      "day" : "{{date, formatDate:dddd}}"
+    },
+    "conditions" : {
+      "A1" : "Zonnig",
+      "A1" : "Veel zon",
+      "B1" : "Bewolkt",
+      "B2" : "Zwaar bewolkt",
+      "C1" : "Regenachtig",
+      "C2" : "Veel regen",
+      "D1" : "Winderig",
+      "D2" : "Veel windvlagen"
+    }
+  },
+  "cities" : {
+    "0" : "Gent",
+    "1" : "Londen",
+    "2" : "Barcelona"
+  },
+  "countries" : {
+    "BE" : "België",
+    "UK" : "Verenigd Koninkrijk",
+    "ES" : "Spanje" 
+  }
+}

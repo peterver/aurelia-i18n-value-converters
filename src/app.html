@@ -1,0 +1,37 @@
+<template>
+  <require from="./app.css"></require>
+  <h1 class="weather-header" t="headline" t-params.bind="data"></h1>
+  <div class="weather-actions">
+    <select class="weather-actions-section-select" value.bind="language">
+      <option value="en">English (en)</option>
+      <option value="nl">Nederlands (nl)</option>
+      <option value="FR">Français (fr)</option>
+    </select>
+    <select class="weather-actions-section-select" value.bind="unit">
+      <option value="0">&deg;C</option>
+      <option value="1">&deg;K</option>
+      <option value="2">&deg;F</option>
+    </select>
+  </div>
+  <section>
+    <article class="weather-el" repeat.for="record of data.records">
+      <header class="weather-el-header">
+        <span class="weather-el-header-city" t="${record.city}"></span>
+        <span class="weather-el-header-country" t="${record.country}"></span>
+      </header>
+      <section repeat.for="day of record.data" class="weather-el-day">
+        <header class="weather-el-day-header">
+          <span class="weather-el-day-header-lbl" t="weather.time.day" t-params.bind="day"></span>
+          <span class="weather-el-day-header-lbl" t="weather.time.date" t-params.bind="day"></span>
+          <span class="weather-el-day-header-lbl" t="weather.time.month" t-params.bind="day"></span>
+        </header>
+        <span class="weather-el-day-temp">
+          ${'weather.temperature' | t:{temp:{val:day.temp, unit:data.unit}} & signal:'unit-signal'}
+        </span>
+        <span class="weather-el-day-cond">
+          ${day.condition | formatCondition & signal:'language-signal'}
+        </span>
+      </section>
+    </article>
+  </section>
+</template>
