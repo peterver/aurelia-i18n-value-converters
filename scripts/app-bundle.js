@@ -173,7 +173,7 @@ define('main',['exports', './environment', 'aurelia-i18n', 'i18next-xhr-backend'
 
       return instance.setup({
         backend: {
-          loadPath: '/locales/{{lng}}/{{ns}}.json'
+          loadPath: './locales/{{lng}}/{{ns}}.json'
         },
         interpolation: {
           format: function format(value, _format, lng) {

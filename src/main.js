@@ -26,7 +26,7 @@ export function configure(aurelia) {
 
     return instance.setup({
       backend : {
-        loadPath : '/locales/{{lng}}/{{ns}}.json',
+        loadPath : './locales/{{lng}}/{{ns}}.json',
       },
       interpolation : {
         format : function (value, format, lng) {
