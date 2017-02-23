@@ -2,7 +2,7 @@
  
 Most if not all projects at one point or another will have to provide multilingual support.
 
-Adding i18n support in aurelia is as easy as adding the [aurelia-i18n](https://github.com/aurelia/i18n) library and [configuring it](http://aurelia.io/hub.html#/doc/article/aurelia/i18n/latest/i18n-with-aurelia).
+Adding i18n support in aurelia is as easy as adding the [aurelia-i18n](https://github.com/aurelia/i18n) plugin and [configuring it](http://aurelia.io/hub.html#/doc/article/aurelia/i18n/latest/i18n-with-aurelia).
 
 But as a project becomes larger, centralizing your logic into reusable components is the way to go.
 
@@ -16,7 +16,7 @@ Create a new aurelia project by running
 
 `au new`
 
-After this has completed, follow the steps at [i18n-with-aurelia](http://aurelia.io/hub.html#/doc/article/aurelia/i18n/latest/i18n-with-aurelia/1) to configure your aurelia project for internationalization.
+After this has completed, follow the steps at [i18n-with-aurelia hub section](http://aurelia.io/hub.html#/doc/article/aurelia/i18n/latest/i18n-with-aurelia/1) to configure your aurelia project for internationalization.
 
 ###1. Adjust the i18n configuration to allow value-converter support
 
@@ -29,13 +29,9 @@ The fact that it acts as a proxy, allows us to still hook into the **i18next ins
 
 i18next provides [interpolation](http://i18next.com/translate/interpolation/) support, this is a way of defining how the specific key-value pairs in your locale file should be processed.
 
-Aurelia provides thin wrappers such as the *df (dateFormat)* value converter to hook into this.
+Aurelia provides thin wrappers such as the *df (dateFormat)* value converter for hooking into this. But what if we wanted to add our own custom value converters into the mix?
 
-But what if we wanted to add our own custom value converters into the mix?
-
-A very interesting configuration option for i18next's interpolation feature is the [format](http://i18next.com/translate/formatting/) property.
-
-This provides us with a hook into the processing pipeline of i18next, go ahead and extend your i18n configuration like so:
+A very interesting configuration option for i18next's interpolation feature is the [format](http://i18next.com/translate/formatting/) property. This provides us with a hook into the processing pipeline of i18next. Go ahead and extend your i18n configuration like so:
 
 ```javascript
 return instance.setup({
@@ -58,7 +54,7 @@ There's a couple of things going on here, let's use an example to explain this s
 
 ###2. Using value converters in your locales, an example
 
-Let's consider a value converter called `formatDate`, all this value converter does is receive a date and a format, and return a string representation of that date in the provided format.
+Let's consider a value converter called `formatDate`, all this value converter does is receive a date and a format, and return a string representation of that date in the provided format. To make that easier, we're using the date manipulation library [Moment.js](https://momentjs.com/)
 
 ```javascript
 import moment from 'moment';
@@ -71,30 +67,30 @@ export class FormatDateValueConverter {
 
 ```
 
-To use this in your view you could have a setup like so : 
+To use this in your view you could have a setup like so: 
 
-```<span t="a" t-params.bind="{date: '2017-02-20}"></span>```
-
-And your locale file could look like : 
-
+```html
+<span t="a" t-params.bind="{date: '2017-02-20}"></span>
 ```
+
+And your locale file could look like this: 
+
+```json
 {
   "a" : "Today's date is : {{date, formatDate:MMMM D YYYY}}"
 }
 ```
 
-When executed, i18next will recognize that the key you're trying to translate contains a section that needs to be interpolated (because of the ```{{ ... }}``` in your locale file).
+When executed, i18next will recognize that the key you're trying to translate contains a section that needs to be interpolated (because of the default prefix and suffix `{{ ... }}` in your locale file).
 
-As such it will execute the *interpolation.format* function that we configured in the previous step.
+> Make sure to visit the i18next [docs section](http://i18next.com/docs/options/#interpolation-options) targeting the interpolation options for further info
 
-This function will receive a value, format and an optional lng parameter
+As such it will execute the *interpolation.format* function that we configured in the previous step. This function will receive a value, format and an optional lng parameter
 
 - Value : The date that we passed, in this case it will be `2017-02-20`
 - Format : Our locale file will define this as being `formatDate:MMMM D YYYY`
 
-The format will be split on the `:` character to become `['formatDate', 'MMMM D YYYY']` where the first part would be the name of your value converter and the second part would be any additional parameters your value converter would need.
-
-Our format function will then look for the value converter in aurelia's registered resources, and will execute the `toView` function with the provided parameters.
+The format will be split on the `:` character to become `['formatDate', 'MMMM D YYYY']` where the first part would be the name of your value converter and the second part would be any additional parameters your value converter would need. Our format function will then look for the value converter in aurelia's registered resources, and will execute the `toView` function with the provided parameters.
 
 And behold, the eventual result would be : ```Today's date is : February 20 2017```
 
