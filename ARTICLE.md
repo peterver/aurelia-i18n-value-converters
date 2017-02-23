@@ -98,9 +98,20 @@ Our format function will then look for the value converter in aurelia's register
 
 And behold, the eventual result would be : ```Today's date is : February 20 2017```
 
-If no value converter was registered under that name, it will simply return the value you passed to it.
-
 ### Take note
 
+- If no value converter was registered under the name that you're trying to format, it will simply render the value of the variable you passed to it.
 - This approach will only work if the value converter that you are trying to use is registered as a global resource.
  
+### Conclusion
+Extending aurelia-i18n is extremely easy, and i'd definitely encourage anyone to try this for him/herself.
+
+For example try writing any of the following and see for yourselves
+
+- A value converter to render out currency values using something like [numeral](http://numeraljs.com/)!
+- A value converter to automatically render out a person's fullname 
+- Automatically prefix the correct title (Miss/Mr./...) based on the locale
+- ... Anything you can imagine :)
+
+But most of all, have fun and be creative!
+
