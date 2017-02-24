@@ -12,13 +12,11 @@ A live preview can be found [here](https://peterver.github.io/aurelia-i18n-value
 
 ###0. Getting Started
 
-Create a new aurelia project by running
+Create a new aurelia project by running `au new` (assuming you are using the [aurelia-cli](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/the-aurelia-cli/1)).
 
-`au new`
+After this has completed, follow the steps at the [i18n-with-aurelia hub section](http://aurelia.io/hub.html#/doc/article/aurelia/i18n/latest/i18n-with-aurelia/1) to configure your aurelia project for internationalization.
 
-After this has completed, follow the steps at [i18n-with-aurelia hub section](http://aurelia.io/hub.html#/doc/article/aurelia/i18n/latest/i18n-with-aurelia/1) to configure your aurelia project for internationalization.
-
-###1. Adjust the i18n configuration to allow value-converter support
+###1. Adjust the i18n configuration to allow for value-converter support
 
 Aurelia-i18n is a wrapper that does two things, and it does it well.
 
@@ -90,7 +88,7 @@ As such it will execute the *interpolation.format* function that we configured i
 - Value : The date that we passed, in this case it will be `2017-02-20`
 - Format : Our locale file will define this as being `formatDate:MMMM D YYYY`
 
-The format will be split on the `:` character to become `['formatDate', 'MMMM D YYYY']` where the first part would be the name of your value converter and the second part would be any additional parameters your value converter would need. Our format function will then look for the value converter in aurelia's registered resources, and will execute the `toView` function with the provided parameters.
+Our interpolation function will split the format on the `:` character to become `['formatDate', 'MMMM D YYYY']` where the first part (*formatDate*) would be the name of the value converter we want to use, and the second part (*MMMM D YYYY*) would be the format parameter our value converter requires. Our format function will then look for the value converter in aurelia's registered resources, and will execute the `toView` function with the provided parameters.
 
 And behold, the eventual result would be : ```Today's date is : February 20 2017```
 
@@ -98,6 +96,7 @@ And behold, the eventual result would be : ```Today's date is : February 20 2017
 
 - If no value converter was registered under the name that you're trying to format, it will simply render the value of the variable you passed to it.
 - This approach will only work if the value converter that you are trying to use is registered as a global resource.
+- Using this approach, you could easily pass in additional parameters to your value converter by doing the following : ```valueConverterName:param1:param2:param3```
  
 ### Conclusion
 Extending aurelia-i18n is extremely easy, and i'd definitely encourage anyone to try this for him/herself.
@@ -105,7 +104,7 @@ Extending aurelia-i18n is extremely easy, and i'd definitely encourage anyone to
 For example try writing any of the following and see for yourselves
 
 - A value converter to render out currency values using something like [numeral](http://numeraljs.com/)!
-- A value converter to automatically render out a person's fullname 
+- A value converter to automatically render out a person's fullname, when provided with an object containing personal details
 - Automatically prefix the correct title (Miss/Mr./...) based on the locale
 - ... Anything you can imagine :)
 
